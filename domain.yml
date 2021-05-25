@@ -1,0 +1,56 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - thank
+  - affirm
+  - deny
+  - bot_challenge
+  - help
+  - out_of_scope
+  - inform
+
+entities:
+  - location
+  - food
+
+slots:
+  location: 
+    type: list
+    influence_conversation: false
+  food: 
+    type: list
+    influence_conversation: false
+
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+  - text: "Hey! What's up?"
+  - text: "Hi, there!"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+  - text: "See you later."
+
+  utter_iamabot:
+  - text: "This is Chatx, your search assistant in SearchX."
+
+  utter_ask_for_food_preference:
+  - text: "What kind of food do you like?"
+
+  utter_ask_for_locaiton_preference:
+  - text: "Where do you like to eat? In Delft? or somewhere else?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+
