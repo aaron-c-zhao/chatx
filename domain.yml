@@ -1,15 +1,23 @@
 version: "2.0"
 
 intents:
-  - greet
-  - goodbye
-  - thank
-  - affirm
-  - deny
-  - bot_challenge
-  - help
-  - out_of_scope
-  - inform
+  - tobot.greet:
+      use_entities: []
+  - tobot.goodbye:
+      use_entities: []
+  - tobot.thank:
+      use_entities: []
+  - tobot.affirm
+  - tobot.deny
+  - tobot.bot_challenge:
+      use_entities: []
+  - tobot.help
+  - tobot.search_for_restaurant
+  - tobot.out_of_scope:
+      use_entities: []
+  - tobot.inform
+  - group_chat 
+
 
 entities:
   - location
@@ -17,37 +25,65 @@ entities:
 
 slots:
   location: 
-    type: list
+    type: text
     influence_conversation: false
   food: 
-    type: list
+    type: text
     influence_conversation: false
 
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-  - text: "Hey! What's up?"
-  - text: "Hi, there!"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+  - text: "Hi! I'm your search assistant. What are you searching for today?"
 
   utter_goodbye:
   - text: "Bye"
   - text: "See you later."
 
   utter_iamabot:
-  - text: "This is Chatx, your search assistant in SearchX."
+  - text: "I'm Chatx, your personal search assistant. Try to ask me someting like: Can you recommand a restaurant?"
 
-  utter_ask_for_food_preference:
+  utter_ask_food:
   - text: "What kind of food do you like?"
 
-  utter_ask_for_locaiton_preference:
-  - text: "Where do you like to eat? In Delft? or somewhere else?"
+  utter_ask_location:
+  - text: "Where do you like to eat?"
+  - text: "Do you have a place in mind?"
+
+  utter_confirm_food_preference:
+  - text: "{food} sounds yummy!"
+
+  utter_ask_vegan:
+  - text: "Are you a vegetarian?"
+
+  utter_give_instructions:
+  - text: ""
+
+  utter_restaurant_rcommendation:
+  - text: "Okay! Looking for restaurant for {food} at {location}..."
+
+  utter_ok:
+  - text: "Okay!"
+
+  utter_no_worry:
+  - text: "No worries!"
+
+  utter_ignore:
+  - text: ""
+
+actions:
+  - action_confirm_food_preference
+  - action_send_query
+  - action_monitor_groupchat
+forms:
+  restaurant_form:
+    required_slots:
+      food:
+        - type: from_entity 
+          entity: food
+      location:
+        - type: from_entity
+          entity: location
 
 session_config:
   session_expiration_time: 60
