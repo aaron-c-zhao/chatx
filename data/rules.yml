@@ -4,13 +4,18 @@ rules:
 
 - rule: Say goodbye anytime the user says goodbye
   steps:
-  - intent: goodbye
+  - intent: tobot.goodbye
   - action: utter_goodbye
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
-  - intent: bot_challenge
+  - intent: tobot.bot_challenge
   - action: utter_iamabot
+
+- rule: Say you're welcome when user says thanks
+  steps:
+  - intent: tobot.thank
+  - action: utter_you_are_welcome
 
 
 

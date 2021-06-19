@@ -21,13 +21,17 @@ intents:
 
 entities:
   - location
-  - food
+  - cuisine
+  - restriction
 
 slots:
   location: 
     type: text
     influence_conversation: false
-  food: 
+  cuisine: 
+    type: text
+    influence_conversation: false
+  restriction:
     type: text
     influence_conversation: false
 
@@ -38,52 +42,55 @@ responses:
 
   utter_goodbye:
   - text: "Bye"
-  - text: "See you later."
 
   utter_iamabot:
-  - text: "I'm Chatx, your personal search assistant. Try to ask me someting like: Can you recommand a restaurant?"
-
-  utter_ask_food:
-  - text: "What kind of food do you like?"
-
-  utter_ask_location:
-  - text: "Where do you like to eat?"
-  - text: "Do you have a place in mind?"
-
-  utter_confirm_food_preference:
-  - text: "{food} sounds yummy!"
-
-  utter_ask_vegan:
-  - text: "Are you a vegetarian?"
-
-  utter_give_instructions:
-  - text: ""
+  - text: "I'm your search assistant. Try ask me someting like: Can you recommand a restaurant?"
 
   utter_restaurant_rcommendation:
-  - text: "Okay! Looking for restaurant for {food} at {location}..."
+  - text: "Okay! Looking for restaurant for {cuisine} at {location}..."
 
   utter_ok:
   - text: "Okay!"
 
-  utter_no_worry:
-  - text: "No worries!"
+  utter_you_are_welcome:
+  - text: "You are welcome!"
 
   utter_ignore:
   - text: ""
+
+
+  # ----------- restaurant form actions -------------------------
+  utter_ask_cuisine:
+  - text: "What type of cuisine are you looking for? Chinese? Italian?"
+
+  utter_ask_location:
+  - text: "Do you have a prefered location?"
+
+  utter_ask_restriction:
+  - text: "Do you have any restrictions/preferences like Vegan, Halal?"
+
+  # ----------- end restaurant form actions ---------------------
+
 
 actions:
   - action_confirm_food_preference
   - action_send_query
   - action_monitor_groupchat
+  - action_reset_preferences
+
+
 forms:
   restaurant_form:
     required_slots:
-      food:
+      cuisine:
         - type: from_entity 
-          entity: food
+          entity: cuisine
       location:
         - type: from_entity
           entity: location
+      restriction:
+        - type: from_entity
+          entity: restriction
 
 session_config:
   session_expiration_time: 60

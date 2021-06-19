@@ -7,11 +7,6 @@ stories:
     - intent: tobot.greet
     - action: utter_greet
 
-- story: thank
-  steps:
-    - intent: tobot.thank
-    - action: utter_no_worry
-
 - story: find_restaurant_happy_path 
   steps:
     - intent: tobot.search_for_restaurant
@@ -21,8 +16,7 @@ stories:
     - intent: tobot.affirm
     - action: action_send_query
 
-
-- story: ask user for location preference when food slot was set 
+- story: ask user for location preference when food slot was set happy path
   steps:
   - intent: group_chat
   - action: action_monitor_groupchat
@@ -31,5 +25,25 @@ stories:
   - action: action_confirm_food_preference
   - intent: tobot.affirm
   - action: action_send_query
+
+- story: find_restaurant_sad_path
+  steps:
+    - intent: tobot.search_for_restaurant
+    - action: restaurant_form
+    - active_loop: restaurant_form
+    - action: action_confirm_food_preference
+    - intent: tobot.deny
+    - action: action_reset_preferences
+
+
+- story: ask user for location preference when food slot was set sad path
+  steps:
+  - intent: group_chat
+  - action: action_monitor_groupchat
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - action: action_confirm_food_preference
+  - intent: tobot.deny
+  - action: action_reset_preferences
 
 

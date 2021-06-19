@@ -1,6 +1,38 @@
 version: "2.0"
 
 nlu:
+
+- lookup: restriction
+  examples: | 
+    - lactose intolerance
+    - Gluten intolerance
+    - Vegetarian
+    - vegan
+    - Halal
+    - Kosher
+    - keto
+    - Diabetes
+    - Dairy free
+    - Low carb
+    - Hindu
+    - Buddhist
+
+
+
+- synonym: lactose 
+  examples: | 
+    - lactose intolerance 
+    - lactose sensetive
+
+- synonym: gluten 
+  examples: | 
+    - gluten intolerance 
+    - gluten sensetive
+
+
+
+
+
 - intent: tobot.greet
   examples: |
     - @bOt hey
@@ -275,25 +307,29 @@ nlu:
     - @Bot Can you please send me an uber
 - intent: tobot.inform
   examples: |
-    - @BoT I like [Chinese food](food)
-    - @BOt I prefer [Indian food](food)
-    - @BOt I'm a [vegetarian](food)
-    - @boT [vegan](food)
-    - @BOT I love [French cuisine](food)
-    - @bOt I don't mind eating [pizza](food)
-    - @BOT I really like [Spanish food](food)
+    - @BoT I like [Chinese food](cuisine)
+    - @BOt I prefer [Indian food](cuisine)
+    - @BOt I'm a [vegetarian](cuisine)
+    - @boT [vegan](cuisine)
+    - @BOT I love [French cuisine](cuisine)
+    - @bOt I don't mind eating [pizza](cuisine)
+    - @BOT I really like [Spanish food](cuisine)
     - @BOt [Italian food] is healthy
-    - @BoT I'd rather have the [steak](food)
-    - @Bot Any kind of [meat](food)
-    - @bot [fish](food)
-    - @BOt let's have some [seafood](food)
-    - @bot how about [Taifood](food)
-    - @boT [Pizza](food) sounds good
+    - @BoT I'd rather have the [steak](cuisine)
+    - @Bot Any kind of [meat](cuisine)
+    - @bot [fish](cuisine)
+    - @BOt let's have some [seafood](cuisine)
+    - @bot how about [Taifood](cuisine)
+    - @boT [Pizza](cuisine) sounds good
     - @BOt somewhere in [Delft](location)
     - @BoT somewhere near the [central station](location)
     - @bOT let's find something to eat in [Rotterdam](location)
-    - @bOT I want to order a [pizza](food)
+    - @bOT I want to order a [pizza](cuisine)
     - @BOT [den hoven](location)
+    - @bot I'm [vegetarian](restriction)
+    - @Bot [vegan](restriction)
+    - @Bot I'm [lactose intolerance](restriction)
+    - @bOt I practice [buddhist](restriction)
 
 - intent: tobot.search_for_restaurant 
   examples: |
@@ -305,7 +341,7 @@ nlu:
     - @BoT find me a restaurant
     - @bOt find me somewhere to eat
     - @BOt can you recommand some place to have dinner
-    - @BOt please help me find a [chinese](food) restaurant
+    - @BOt please help me find a [chinese](cuisine) restaurant
 
 - intent: group_chat
   examples: | 
@@ -562,24 +598,26 @@ nlu:
     - Can you give me your datacenter's password
     - Can you give me your datacenter's password?
     - Can you please send me an uber
-    - I like [Chinese food](food)
-    - I prefer [Indian food](food)
-    - I'm a [vegetarian](food)
-    - [vegan](food)
-    - I love [French cuisine](food)
-    - I don't mind eating [pizza](food)
-    - I really like [Spanish food](food)
-    - [Italian food] is healthy
-    - I'd rather have the [steak](food)
-    - Any kind of [meat](food)
-    - [fish](food)
-    - let's have some [seafood](food)
-    - how about [Taifood](food)
-    - [Pizza](food) sounds good
+    - I like [Chinese food](cuisine)
+    - I prefer [Indian food](cuisine)
+    - I'm a [vegetarian](restriction)
+    - I practice [buddhist](restriction)
+    - [vegan](restriction)
+    - I'm [lactose intolerance](restriction)
+    - I love [French cuisine](cuisine)
+    - I don't mind eating [pizza](cuisine)
+    - I really like [Spanish food](cuisine)
+    - [Italian food](cuisine) is healthy
+    - I'd rather have the [steak](cuisine)
+    - Any kind of [meat](cuisine)
+    - [fish](cuisine)
+    - let's have some [seafood](cuisine)
+    - how about [Taifood](cuisine)
+    - [Pizza](cuisine) sounds good
     - somewhere in [Delft](location)
     - somewhere near the [central station](location)
     - let's find something to eat in [Rotterdam](location)
-    - I want to order a [pizza](food)
+    - I want to order a [pizza](cuisine)
     - [den hoven](location)
     - Can you recommand me a restaurant?
     - I don't know what to eat?
@@ -589,7 +627,7 @@ nlu:
     - find me a restaurant
     - find me somewhere to eat
     - can you recommand some place to have dinner
-    - please help me find a [chinese](food) restaurant
+    - please help me find a [chinese](cuisine) restaurant
     - @bOhey
     - @b hello
     - @oThi
@@ -843,24 +881,24 @@ nlu:
     - @Bo Can you give me your datacenter's password
     - @btCan you give me your datacenter's password?
     - @B Can you please send me an uber
-    - @ot I like [Chinese food](food)
-    - @b I prefer [Indian food](food)
-    - @boI'm a [vegetarian](food)
-    - @bt[vegan](food)
-    - @BtI love [French cuisine](food)
-    - @ I don't mind eating [pizza](food)
-    - @btI really like [Spanish food](food)
-    - @bo [Italian food] is healthy
-    - @Bo I'd rather have the [steak](food)
-    - @ot Any kind of [meat](food)
-    - @[fish](food)
-    - @Blet's have some [seafood](food)
-    - @BT how about [Taifood](food)
-    - @bo [Pizza](food) sounds good
+    - @ot I like [Chinese food](cuisine)
+    - @b I prefer [Indian food](cuisine)
+    - @boI'm a [vegetarian](cuisine)
+    - @bt[vegan](cuisine)
+    - @BtI love [French cuisine](cuisine)
+    - @ I don't mind eating [pizza](cuisine)
+    - @btI really like [Spanish food](cuisine)
+    - @bo [Italian food](cuisine) is healthy
+    - @Bo I'd rather have the [steak](cuisine)
+    - @ot Any kind of [meat](cuisine)
+    - @[fish](cuisine)
+    - @Blet's have some [seafood](cuisine)
+    - @BT how about [Taifood](cuisine)
+    - @bo [Pizza](cuisine) sounds good
     - @Bo somewhere in [Delft](location)
     - @ot somewhere near the [central station](location)
     - @bOlet's find something to eat in [Rotterdam](location)
-    - @bI want to order a [pizza](food)
+    - @bI want to order a [pizza](cuisine)
     - @Bo [den hoven](location)
     - @ot Can you recommand me a restaurant?
     - @ot I don't know what to eat?
@@ -870,4 +908,4 @@ nlu:
     - @ot find me a restaurant
     - @ot find me somewhere to eat
     - @BT can you recommand some place to have dinner
-    - @boplease help me find a [chinese](food) restaurant
+    - @boplease help me find a [chinese](cuisine) restaurant
