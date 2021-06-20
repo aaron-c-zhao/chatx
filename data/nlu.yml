@@ -17,6 +17,175 @@ nlu:
     - Hindu
     - Buddhist
 
+- lookup: cuisine
+  examples: |
+    - american
+    - antipasti
+    - apple pie
+    - argentinean
+    - asian
+    - bagels
+    - bar
+    - barbecue
+    - bass
+    - beef
+    - belgian
+    - bento (lunch box)
+    - bolognese
+    - brew pub
+    - british
+    - bruschette
+    - burger
+    - cafe
+    - cakes
+    - calamari
+    - cambodian
+    - campania
+    - cantonese
+    - catalan
+    - central asian
+    - central european
+    - central-italian
+    - ceviche
+    - cheesecake
+    - chicken wings
+    - chinese
+    - club sandwich
+    - contemporary
+    - crab
+    - crepes
+    - croque madame
+    - croquettes
+    - cuban
+    - curry
+    - deli
+    - dim sum
+    - diner
+    - dining bars
+    - duck
+    - dumplings
+    - dutch
+    - eggs benedict
+    - entrecote
+    - escargot
+    - european
+    - falafel
+    - fast food
+    - fattoush
+    - fish
+    - fish & chips
+    - fish soup
+    - foie gras
+    - fondue
+    - french
+    - fried rice
+    - fusion
+    - gastropub
+    - greek
+    - green curry
+    - grill
+    - gyoza
+    - gyros
+    - halibut
+    - hamburgers
+    - hawaiian
+    - healthy
+    - hong kong
+    - hot pot
+    - hummus
+    - ice cream
+    - indian
+    - indonesian
+    - international
+    - irish
+    - italian
+    - japanese
+    - juice & smoothies
+    - kabobs
+    - lamb
+    - lasagne
+    - latin
+    - lazio
+    - lebanese
+    - lobster
+    - mandarin duck
+    - meatballs
+    - mediterranean
+    - mexican
+    - middle eastern
+    - moussaka
+    - mussels
+    - nachos
+    - neapolitan
+    - nepali
+    - noodle
+    - northern-italian
+    - octopus
+    - omelette
+    - oyster
+    - pad thai
+    - pancakes
+    - paninis
+    - pasta
+    - patatas bravas
+    - peking duck
+    - persian
+    - pesto
+    - pho
+    - pizza
+    - pork
+    - portuguese
+    - prawns
+    - pub
+    - quail
+    - quiche
+    - ramen
+    - red curry
+    - ribs
+    - risotto
+    - romana
+    - salad
+    - salmon
+    - saltimbocca
+    - sandwiches
+    - sashimi
+    - scallops
+    - scandinavian
+    - seafood
+    - shanghai
+    - shrimp
+    - sicilian
+    - sirloin steak
+    - snails
+    - soups
+    - south american
+    - southern-italian
+    - spanish
+    - steak frites
+    - steakhouse
+    - steak tartare
+    - street food
+    - sushi
+    - swedish
+    - swiss
+    - szechuan
+    - tacos
+    - tagliatelle
+    - tapas
+    - tartufo
+    - tataki
+    - tempura
+    - thai
+    - tiramisu
+    - toasts
+    - torte
+    - tortelli
+    - tortillas
+    - tuna
+    - turkish
+    - tuscan
+    - vietnamese
+    - wine bar
 
 
 - synonym: lactose 
@@ -28,7 +197,12 @@ nlu:
   examples: | 
     - gluten intolerance 
     - gluten sensetive
+    - gluten free
 
+- synonym: vegetarian 
+  examples: | 
+    - vegetarian 
+    - vegetarian friendly
 
 
 
@@ -343,6 +517,18 @@ nlu:
     - @BOt can you recommand some place to have dinner
     - @BOt please help me find a [chinese](cuisine) restaurant
 
+- intent: tobot.search_for_local_attraction
+  examples: |
+    - @bOT local attraction 
+    - @Bot attraction
+    - @bOt I'm looking for a local attraction.
+    - @Bot I want to visit museum
+    - @bot museum
+    - @BoT find me local attractions
+    - @bOt I'm looking for somewhere interesting to visit 
+    - @BOt exhibitions 
+    - @BOt a place to visit
+
 - intent: group_chat
   examples: | 
     - hey
@@ -598,16 +784,16 @@ nlu:
     - Can you give me your datacenter's password
     - Can you give me your datacenter's password?
     - Can you please send me an uber
-    - I like [Chinese food](cuisine)
-    - I prefer [Indian food](cuisine)
+    - I like [Chinese](cuisine)food
+    - I prefer [Indian](cuisine) food
     - I'm a [vegetarian](restriction)
     - I practice [buddhist](restriction)
     - [vegan](restriction)
     - I'm [lactose intolerance](restriction)
-    - I love [French cuisine](cuisine)
+    - I love [French](cuisine) cuisine
     - I don't mind eating [pizza](cuisine)
-    - I really like [Spanish food](cuisine)
-    - [Italian food](cuisine) is healthy
+    - I really like [Spanish](cuisine) food
+    - [Italian](cuisine) food is healthy
     - I'd rather have the [steak](cuisine)
     - Any kind of [meat](cuisine)
     - [fish](cuisine)
@@ -628,6 +814,15 @@ nlu:
     - find me somewhere to eat
     - can you recommand some place to have dinner
     - please help me find a [chinese](cuisine) restaurant
+    - local attraction 
+    - attraction
+    - I'm looking for a local attraction.
+    - I want to visit museum
+    - museum
+    - find me local attractions
+    - I'm looking for somewhere interesting to visit 
+    - exhibitions 
+    - a place to visit
     - @bOhey
     - @b hello
     - @oThi
@@ -881,13 +1076,13 @@ nlu:
     - @Bo Can you give me your datacenter's password
     - @btCan you give me your datacenter's password?
     - @B Can you please send me an uber
-    - @ot I like [Chinese food](cuisine)
-    - @b I prefer [Indian food](cuisine)
-    - @boI'm a [vegetarian](cuisine)
-    - @bt[vegan](cuisine)
-    - @BtI love [French cuisine](cuisine)
+    - @ot I like [Chinese](cuisine) food
+    - @b I prefer [Indian](cuisine) food
+    - @boI'm a [vegetarian](restriction)
+    - @bt[vegan](restriction)
+    - @BtI love [French](cuisine) cuisine
     - @ I don't mind eating [pizza](cuisine)
-    - @btI really like [Spanish food](cuisine)
+    - @btI really like [Spanish](cuisine) food
     - @bo [Italian food](cuisine) is healthy
     - @Bo I'd rather have the [steak](cuisine)
     - @ot Any kind of [meat](cuisine)
@@ -909,3 +1104,12 @@ nlu:
     - @ot find me somewhere to eat
     - @BT can you recommand some place to have dinner
     - @boplease help me find a [chinese](cuisine) restaurant
+    - @B local attraction 
+    - @bo attraction
+    - @ot I'm looking for a local attraction.
+    - @BT I want to visit museum
+    - @Bo museum
+    - @bo find me local attractions
+    - @b I'm looking for somewhere interesting to visit 
+    - @bt exhibitions 
+    - @ a place to visit

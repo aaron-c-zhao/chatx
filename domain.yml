@@ -88,9 +88,6 @@ forms:
       location:
         - type: from_entity
           entity: location
-      restriction:
-        - type: from_entity
-          entity: restriction
 
 session_config:
   session_expiration_time: 60

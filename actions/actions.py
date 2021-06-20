@@ -15,6 +15,7 @@ from rasa_sdk.events import AllSlotsReset, FollowupAction
 
 import requests
 import json
+import config
 
 json_file= open('api.json')
 filterv2 = json.load(json_file)
@@ -37,17 +38,14 @@ class ActionConfirmFoodPreference(Action):
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
     
-    
         dispatcher.utter_message(
             json_message={
-                "text": " Looking for a {cuisine} restaurant in {loc} that serves {restriction} food?" \
-                    .format(loc=tracker.slots['location'], cuisine=tracker.slots['cuisine'], restriction=tracker.slots['restriction']),
+                "text": " Looking for a {cuisine} restaurant at {loc}?" \
+                    .format(loc=tracker.slots['location'], cuisine=tracker.slots['cuisine']),
                 "type": "confirm"
             }
         )
-
         return []
-
 
 class ActionSendQuery(Action): 
     def __init__(self):
@@ -77,13 +75,12 @@ class ActionSendQuery(Action):
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         loc = tracker.slots['location']
+        loc_id = 188626
 
         headers = {
-            'x-rapidapi-key': "0f938c1e2bmsh3328e331fae389cp1830bajsn6682184f42a9",
+            'x-rapidapi-key': config.config['rapidAPIKey'],
             'x-rapidapi-host': "travel-advisor.p.rapidapi.com"
         }
-
-        loc_id = 188626
 
         if loc in self.loc_dic:
             loc_id = self.loc_dic[loc]
@@ -101,7 +98,7 @@ class ActionSendQuery(Action):
         url = "https://travel-advisor.p.rapidapi.com/restaurants/list"
         querystring = {"location_id":"{location}".format(location=loc_id),"restaurant_tagcategory":"10591","restaurant_tagcategory_standalone":"10591",\
                 "combined_food":"{cuisine}".format(cuisine = self.__findCuisineId(tracker)),"currency":"USD","lunit":"km",\
-                "dietary_restrictions":"{restriction}".format(restriction= self.__findRestrictionId(tracker)),"limit":"30","open_now":"false","lang":"en_US"}
+                "dietary_restrictions":"undefined","limit":"30","open_now":"false","lang":"en_US"}
 
         response = requests.request("GET", url, headers=headers, params=querystring)
         res_json = response.json()
@@ -128,7 +125,6 @@ class ActionSendQuery(Action):
 
         return [AllSlotsReset()]
 
-    
 
 class ActionMonitorGroupChat(Action):
     def name(self) -> Text:
@@ -138,7 +134,7 @@ class ActionMonitorGroupChat(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
             
-            if not tracker.slots['cuisine'] and not tracker.slots['location'] and not tracker.slots['restriction']:
+            if not tracker.slots['cuisine'] and not tracker.slots['location'] and not tracker.slots['attraction_type']:
                 return [FollowupAction(name= 'utter_ignore')] 
             else:
                 return []

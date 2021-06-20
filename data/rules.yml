@@ -17,5 +17,3 @@ rules:
   - intent: tobot.thank
   - action: utter_you_are_welcome
 
-
-
