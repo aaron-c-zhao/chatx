@@ -108,17 +108,23 @@ class ActionSendQuery(Action):
             "text": [],
             "type": "result"
         } 
-        for rest in res_json['data']:
-            if  'name' in rest:
-                result['text'].append({
-                    "name": rest['name'],
-                    "image": rest['photo']['images']['thumbnail'] if 'photo' in rest else "",
-                    "rating": rest['rating'],
-                    "price_level": rest['price_level'] if 'price_level' in rest else "",
-                    "website": rest['website'] if "website" in rest else "",
-                    "address": rest['address'],
-                    "type": rest['cuisine'] if "cuisine" in rest else ""
-                })
+        if 'data' in res_json:
+            for rest in res_json['data']:
+                if  'name' in rest:
+                    result['text'].append({
+                        "name": rest['name'],
+                        "image": rest['photo']['images']['thumbnail'] if 'photo' in rest else "",
+                        "rating": rest['rating'],
+                        "price_level": rest['price_level'] if 'price_level' in rest else "",
+                        "website": rest['website'] if "website" in rest else "",
+                        "address": rest['address'],
+                        "type": rest['cuisine'] if "cuisine" in rest else ""
+                    })
+        else:
+            result = {
+                "text": "Sorry, I can not find anything.",
+                "type": "text"
+            }
 
         dispatcher.utter_message(
             json_message= result
