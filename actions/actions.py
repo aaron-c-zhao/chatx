@@ -56,6 +56,7 @@ class ActionSendQuery(Action):
         
     def __findCuisineId(self, tracker):
         targetCuisine = tracker.slots['cuisine'].lower()
+        print(targetCuisine)
         if targetCuisine in cuisineType:
             return cuisineType[targetCuisine]
         else:
@@ -134,7 +135,7 @@ class ActionMonitorGroupChat(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
             
-            if not tracker.slots['cuisine'] and not tracker.slots['location'] and not tracker.slots['attraction_type']:
+            if not tracker.slots['cuisine'] and not tracker.slots['location']:
                 return [FollowupAction(name= 'utter_ignore')] 
             else:
                 return []
