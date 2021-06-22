@@ -31,15 +31,10 @@ pipeline:
     model: "en_core_web_lg"
   - name: SpacyTokenizer
   - name: SpacyFeaturizer
-    alias: spacy
   - name: RegexFeaturizer
-    alias: "regex"
   - name: LexicalSyntacticFeaturizer
-    alias: "lexical-syntactic"
   - name: CountVectorsFeaturizer
-    alias: "cvf-word"
   - name: CountVectorsFeaturizer
-    alias: "cvf-char"
     analyzer: "char_wb"
     min_ngram: 1
     max_ngram: 4
@@ -47,7 +42,6 @@ pipeline:
     epochs: 100
   - name: EntitySynonymMapper
   - name: ResponseSelector
-    featurizers: ["spacy", "cvf-word"]
     epochs: 100 
 
 # Configuration for Rasa Core.
