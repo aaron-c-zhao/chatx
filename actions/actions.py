@@ -17,7 +17,7 @@ import requests
 import json
 import config
 
-json_file= open('api.json')
+json_file= open('restaurant_filter.json')
 filterv2 = json.load(json_file)
 json_file.close()
 cuisineType = {}
@@ -117,7 +117,7 @@ class ActionSendQuery(Action):
                     "price_level": rest['price_level'] if 'price_level' in rest else "",
                     "website": rest['website'] if "website" in rest else "",
                     "address": rest['address'],
-                    "cuisine": rest['cuisine'] if "cuisine" in rest else ""
+                    "type": rest['cuisine'] if "cuisine" in rest else ""
                 })
 
         dispatcher.utter_message(
