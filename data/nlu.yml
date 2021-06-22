@@ -481,14 +481,15 @@ nlu:
     - @Bot Can you please send me an uber
 - intent: tobot.inform
   examples: |
-    - @BoT I like [Chinese food](cuisine)
-    - @BOt I prefer [Indian food](cuisine)
+    - @BoT I like [Chinese](cuisine) food
+    - @BOt I prefer [Indian](cuisine) food
     - @BOt I'm a [vegetarian](cuisine)
     - @boT [vegan](cuisine)
+    - @bot [French](cuisine) food
     - @BOT I love [French cuisine](cuisine)
     - @bOt I don't mind eating [pizza](cuisine)
-    - @BOT I really like [Spanish food](cuisine)
-    - @BOt [Italian food] is healthy
+    - @BOT I really like [Spanish](cuisine) food
+    - @BOt [Italian](cuisine) food is healthy 
     - @BoT I'd rather have the [steak](cuisine)
     - @Bot Any kind of [meat](cuisine)
     - @bot [fish](cuisine)
