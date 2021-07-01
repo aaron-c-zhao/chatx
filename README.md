@@ -5,7 +5,6 @@
 Aid users during the search tasks. For now, the chatbot supports the follwing three domains:
 * find a restaurant
 * find a local attrication
-* find a book
 
 ## Requirements
 
